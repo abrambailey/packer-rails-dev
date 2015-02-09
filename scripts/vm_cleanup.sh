@@ -1,5 +1,5 @@
 #!/bin/bash
-set -xeo pipefail
+set -eo pipefail
 
 echo "cleaning apt cache"
 apt-get autoremove

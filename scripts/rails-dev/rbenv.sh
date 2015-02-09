@@ -1,5 +1,5 @@
 #!/bin/bash
-set -xeo pipefail
+set -eo pipefail
 
 # Setup rbenv
 git clone https://github.com/sstephenson/rbenv.git /home/vagrant/.rbenv
