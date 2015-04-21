@@ -13,8 +13,8 @@ apt-get install -y \
   memcached \
   nodejs \
   phantomjs\
-  postgresql-9.3 \
-  postgresql-contrib-9.3 \
+  postgresql-9.4 \
+  postgresql-contrib-9.4 \
   libpq-dev \
   libxml2-dev \
   libxslt1-dev \
