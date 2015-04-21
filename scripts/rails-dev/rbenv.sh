@@ -14,8 +14,8 @@ export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 
 # Install MRI 2.1.5 and make it the default
-rbenv install 2.1.5
-rbenv global 2.1.5
+rbenv install 2.2.2
+rbenv global 2.2.2
 
 # Install bundler
 echo 'gem: --no-ri --no-rdoc' >> /home/vagrant/.gemrc
