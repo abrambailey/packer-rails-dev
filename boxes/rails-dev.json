@@ -24,29 +24,44 @@
     "virtualbox_version_file": ".vbox_version",
     "vm_name": "mojocode-base"
   }],
-  "provisioners": [{
+  "provisioners": [
+  {
+    "type": "shell",
     "execute_command": "echo 'vagrant' | {{.Vars}} sudo -E -S bash '{{.Path}}'",
     "scripts": [
       "scripts/vagrant.sh",
       "scripts/upgrade.sh",
       "scripts/virtualbox.sh",
       "scripts/rails-dev/install.sh"
-    ],
-    "type": "shell"
+    ]    
   }, {
+    "type": "shell",
     "scripts": [
-      "scripts/rails-dev/rbenv.sh"
-    ],
-    "type": "shell"
+      "scripts/rails-dev/rbenv.sh",
+      "scripts/rails-dev/server.sh"
+    ]
   }, {
+    "type": "file",
+    "source": "/home/funkdified/rails_projects/rails-devise/packer-files/site.conf",
+    "destination": "/tmp/site.conf"
+  }, {
+    "type": "shell",
+    "execute_command": "echo 'vagrant' | {{.Vars}} sudo -E -S bash '{{.Path}}'",
+    "inline": [
+      "sudo mv /tmp/site.conf /etc/nginx/sites-enabled/site.conf",
+      "sudo service nginx restart"
+    ]
+  }, {
+    "type": "shell",
     "execute_command": "echo 'vagrant' | {{.Vars}} sudo -E -S bash '{{.Path}}'",
     "scripts": [
       "scripts/vm_cleanup.sh"
-    ],
-    "type": "shell"
+    ] 
   }],
   "post-processors": [{
     "type": "vagrant",
     "output": "builds/rails-dev.box"
   }]
 }
+
+
